@@ -1,0 +1,46 @@
+@model CapgeminiTest.Models.Member
+@{
+    ViewBag.Title="Premium Calculator";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+<div class="container mt-5">
+<h3>Premium Calculator</h3>
+<form method="post">
+<div class="form-group">
+<label>Name</label>
+<input class="form-control" name="Name" required />
+</div>
+
+<div class="form-group">
+<label>Age Next Birthday</label>
+<input class="form-control" name="AgeNextBirthday" type="number" required />
+</div>
+
+<div class="form-group">
+<label>Date of Birth</label>
+<input class="form-control" name="DOB" placeholder="MM/YYYY" required />
+</div>
+
+<div class="form-group">
+<label>Occupation</label>
+<select class="form-control" name="Occupation" onchange="this.form.submit()">
+@foreach(var o in ViewBag.Occupations){
+<option value="@o">@o</option>
+}
+</select>
+</div>
+
+<div class="form-group">
+<label>Death Sum Assured</label>
+<input class="form-control" name="DeathSumInsured" type="number" required />
+</div>
+
+@if(Model!=null){
+<div class="alert alert-info">
+Calculated Premium: <b>@Model.MonthlyPremium</b>
+</div>
+}
+
+<button class="btn btn-primary">Submit</button>
+</form>
+</div>
